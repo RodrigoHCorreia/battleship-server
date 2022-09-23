@@ -1,16 +1,16 @@
 package battleship.server.controllers
 
 import battleship.server.model.User
+import battleship.server.services.ServerInfoService
 import org.springframework.util.MultiValueMap
 import org.springframework.web.bind.annotation.*
-import serverInfo
 import users
 
 @RestController
 class BasicController {
 
     @GetMapping("systemInfo")
-    fun getVersion() = serverInfo
+    fun getVersion() = ServerInfoService.retrieveServerInfo()
 
 }
 
@@ -36,6 +36,7 @@ class UserController {
         )
     }
 
+    /*
     //By default gives wins ranking
     @GetMapping("ranking/{type}")
     fun getRanking(@PathVariable type: String, @RequestParam limit : Int?) : List<User> {
@@ -54,9 +55,6 @@ class UserController {
             .reversed()
             .take(actualLimit);
     }
-
-
-
-
+    */
 
 }

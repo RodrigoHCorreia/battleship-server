@@ -11,9 +11,6 @@ val defaultShipTypes = listOf(
     ShipType("Carrier", 5, 4)
 )
 
-data class Game(
-    val shipTypes = defaultShipTypes
-)
 
 
 
