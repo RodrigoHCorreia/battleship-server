@@ -40,18 +40,12 @@ class UserController {
     @GetMapping("ranking/{type}")
     fun getRanking(@PathVariable type: String, @RequestParam limit : Int?) : List<User> {
 
-//        val orderingParameter = when(type.toUpperCase().firstOrNull()){
-//            'P' -> "played"
-//            'W' -> "won"
-//            null -> "won"
-//            else -> "won"
-//        }
-
+        // THIS IS SERVICES
         val actualLimit = if(limit == null || limit > 100) 100 else limit
         return users.toList()
             .map {it.second }
-            .sortedWith()
-            .reversed()
+            .sortedWith(/* todo: comparator */)
+            //.reversed()
             .take(actualLimit);
     }
 
