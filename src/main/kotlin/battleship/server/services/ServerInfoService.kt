@@ -15,7 +15,7 @@ val serverInfo = ServerInfo (
 class ServerInfoService {
 
     companion object {
-        fun retrieveServerInfo() = serverInfo;
+        fun retrieveServerInfo() = serverInfo
     }
 
 }

@@ -6,11 +6,46 @@ const val DIMENSION_ROW_DEFAULT = 10;
 
 val defaultShipTypes = listOf(
     ShipType("Carrier", 5, 1),
-    ShipType("Destroyer", 5, 2),
-    ShipType("Frigate", 5, 3),
-    ShipType("Carrier", 5, 4)
+    ShipType("Battleship", 4, 1),
+    ShipType("Cruiser", 3, 1),
+    ShipType("Submarine", 3, 1),
+    ShipType("Destroyer", 2, 1)
 )
 
+/**
+ * All ship types allowed in the game.
+ * @property name [ShipType] name.
+ * @property size Number of squares occupied.
+ * @property quantity Number of ships of this type available.
+ *
+ */
+
+data class ShipType(
+    val name: String,
+    val size : Int,
+    val quantity: Int,
+    val positionSlots: MutableList<Coordinate> = mutableListOf()
+) {
+    init {
+        //check if ship is all horizontal or all vertical
+    }
+    fun isDestroyed() : Boolean {
+        positionSlots.forEach {
+            if(it.entity==Entity.SHIP) return false
+        }
+        return true
+    }
+}
+
+data class Coordinate(
+    val letter: Char, //line
+    val number: Byte, //column
+    val entity: Entity
+)
+
+enum class Entity{
+    WATER, SHIP, DAMAGED
+}
 
 
 

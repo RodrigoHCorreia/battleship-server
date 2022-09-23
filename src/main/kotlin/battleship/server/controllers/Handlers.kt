@@ -36,23 +36,16 @@ class UserController {
         )
     }
 
-    /*
+
     //By default gives wins ranking
     @GetMapping("ranking/{type}")
     fun getRanking(@PathVariable type: String, @RequestParam limit: Int?): List<User> {
 
         // THIS IS SERVICES
         val actualLimit = if (limit == null || limit > 100) 100 else limit
-        return users.toList()
-            .map { it.second }
-            .sortedWith(/* todo: comparator */)
-            //.reversed()
-            .take(actualLimit);
+        val sorted = if(type=="won") users.sortedByDescending { it.gamesWon }
+        else users.sortedByDescending { it.gamesPlayed }
+        return sorted.take(actualLimit)
     }
-<<<<<<< HEAD
-    */
-=======
-
->>>>>>> refs/remotes/origin/main
 
 }
