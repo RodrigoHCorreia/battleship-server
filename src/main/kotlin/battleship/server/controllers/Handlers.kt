@@ -19,14 +19,14 @@ class BasicController {
 class UserController {
 
     @PostMapping("addUser")
-    fun addUser(@RequestBody body : MultiValueMap<String, String>) {
-        val newID = users.size;
-        val name = body.getFirst("username");
+    fun addUser(@RequestBody body: MultiValueMap<String, String>) {
+        val newID = users.size
+        val name = body.getFirst("username")
         //TODO: encrypt, and sanitize this data
-        val password = body.getFirst("password");
-        if(name == null || password == null) {
+        val password = body.getFirst("password")
+        if (name == null || password == null) {
             TODO()
-            return;
+            return
         }
 
         val newUser = User(
@@ -38,19 +38,16 @@ class UserController {
 
     //By default gives wins ranking
     @GetMapping("ranking/{type}")
-    fun getRanking(@PathVariable type: String, @RequestParam limit : Int?) : List<User> {
+    fun getRanking(@PathVariable type: String, @RequestParam limit: Int?): List<User> {
 
         // THIS IS SERVICES
-        val actualLimit = if(limit == null || limit > 100) 100 else limit
+        val actualLimit = if (limit == null || limit > 100) 100 else limit
         return users.toList()
-            .map {it.second }
+            .map { it.second }
             .sortedWith(/* todo: comparator */)
             //.reversed()
             .take(actualLimit);
     }
-
-
-
 
 
 }
