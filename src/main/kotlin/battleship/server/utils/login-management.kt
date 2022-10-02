@@ -8,8 +8,3 @@ fun hashPassword(password: String) = pbkdf2PasswordEncoder.encode(password)
 
 fun checkPassword(password: String, hashedPassword: String) =
     pbkdf2PasswordEncoder.matches(password, hashedPassword)
-
-fun isValidUserData(s: String?) : Boolean {
-    if(s.isNullOrEmpty() || s.isBlank() || s.contains(" ")) return false
-    return true
-}

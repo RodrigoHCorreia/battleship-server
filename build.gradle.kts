@@ -16,13 +16,17 @@ repositories {
 }
 
 dependencies {
+	//veio com o Spring Initializr:
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+	//adicionado:
 	implementation("org.springframework.boot:spring-boot-starter-security") //para password hashing
+	implementation("org.springframework.boot:spring-boot-starter-validation:2.7.4") //para validar request bodies
+	implementation("com.google.code.gson:gson:2.9.1") //para converter objetos para json e vice versa
 }
 
 tasks.withType<KotlinCompile> {

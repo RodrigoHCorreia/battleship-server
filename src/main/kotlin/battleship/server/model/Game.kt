@@ -1,8 +1,22 @@
 package battleship.server.model
 
-const val DIMENSION_COL_DEFAULT = 10;
-const val DIMENSION_ROW_DEFAULT = 10;
+import com.google.gson.annotations.Expose
 
+const val DIMENSION_COL_DEFAULT = 10
+const val DIMENSION_ROW_DEFAULT = 10
+
+data class Game(
+    @Expose val lobbyName: String,
+    @Expose val creatorName: String,
+    val invitedUserName: String?,
+    val winnerIsCreator: Boolean?,
+    val movesList: List<Move>
+)
+
+data class Move( //todo
+    val user: String,
+    val data: Any
+)
 
 val defaultShipTypes = listOf(
     ShipType("Carrier", 5, 1),
