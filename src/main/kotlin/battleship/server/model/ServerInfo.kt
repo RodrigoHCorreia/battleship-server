@@ -1,9 +1,9 @@
 package battleship.server.model
 
 data class Author(
+    val id: Int,
     val name: String,
     val email: String,
-    val id: Int
 )
 
 data class ServerInfo (

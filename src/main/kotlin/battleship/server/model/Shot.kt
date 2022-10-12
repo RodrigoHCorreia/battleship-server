@@ -1,2 +1,0 @@
-package battleship.server.model
-
