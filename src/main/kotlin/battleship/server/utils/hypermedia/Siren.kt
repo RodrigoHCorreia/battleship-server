@@ -4,7 +4,7 @@ package battleship.server.utils.hypermedia
 
 import java.net.URI
 import org.springframework.http.*
-import org.springframework.http.
+import com.fasterxml.jackson.databind.type.TypeFactory
 
 /**
  * For details regarding the Siren media type, see <a href="https://github.com/kevinswiber/siren">Siren</a>
@@ -65,8 +65,8 @@ data class SirenEntity<T>(
     val title: String? = null
 ) {
     companion object {
-        inline fun <reified T> getType(): TypeToken<SirenEntity<T>> =
-            object : TypeToken<SirenEntity<T>>() { }
+        inline fun <reified T> getType(): TypeFactory<SirenEntity<T>> =
+            object : TypeFactory<SirenEntity<T>>() { }
     }
 }
 
@@ -95,7 +95,7 @@ data class EmbeddedEntity<T>(
     val title: String? = null
 ) : SubEntity() {
     companion object {
-        inline fun <reified T> getType(): TypeToken<EmbeddedEntity<T>> =
-            object : TypeToken<EmbeddedEntity<T>>() { }
+        inline fun <reified T> getType(): TypeFactory<EmbeddedEntity<T>> =
+            object : TypeFactory<EmbeddedEntity<T>>() { }
     }
 }
