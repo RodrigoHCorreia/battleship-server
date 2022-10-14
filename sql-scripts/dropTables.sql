@@ -1,4 +1,3 @@
 
-drop table if exists GAMES;
-
-drop table if exists USERS;
+drop table if exists GAME;
+drop table if exists PLAYER;

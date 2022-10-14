@@ -1,4 +1,3 @@
 
-delete from GAMES;
-
-delete from USERS;
+delete from GAME;
+delete from PLAYER;
