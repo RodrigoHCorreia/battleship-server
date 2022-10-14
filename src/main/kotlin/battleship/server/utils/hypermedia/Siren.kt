@@ -2,6 +2,8 @@
 
 package battleship.server.utils.hypermedia
 
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.core.type.TypeReference
 import java.net.URI
 import org.springframework.http.*
 import com.fasterxml.jackson.databind.type.TypeFactory
@@ -14,7 +16,7 @@ private const val APPLICATION_TYPE = "application"
 private const val SIREN_SUBTYPE = "vnd.siren+json"
 
 
-val SirenMediaType = "$APPLICATION_TYPE/$SIREN_SUBTYPE"
+const val SirenMediaType = "$APPLICATION_TYPE/$SIREN_SUBTYPE"
 
 /**
  * Gets a Siren self link for the given URI
@@ -40,6 +42,7 @@ data class SirenAction(
     val name: String,
     val href: URI,
     val title: String? = null,
+    @JsonProperty("class")
     val clazz: List<String>? = null,
     val method: HttpMethod? = null,
     val type: MediaType? = null,
@@ -57,6 +60,7 @@ data class SirenAction(
 }
 
 data class SirenEntity<T>(
+    @JsonProperty("class")
     val clazz: List<String>? = null,
     val properties: T? =null,
     val entities: List<SubEntity>? = null,
@@ -65,8 +69,8 @@ data class SirenEntity<T>(
     val title: String? = null
 ) {
     companion object {
-        inline fun <reified T> getType(): TypeFactory<SirenEntity<T>> =
-            object : TypeFactory<SirenEntity<T>>() { }
+        inline fun <reified T> getType(): TypeReference<SirenEntity<T>> =
+            object : TypeReference<SirenEntity<T>>() { }
     }
 }
 
@@ -78,6 +82,7 @@ data class SirenEntity<T>(
 sealed class SubEntity
 
 data class EmbeddedLink(
+    @JsonProperty("class")
     val clazz: List<String>? = null,
     val rel: List<String>,
     val href: URI,
@@ -87,6 +92,7 @@ data class EmbeddedLink(
 
 data class EmbeddedEntity<T>(
     val rel: List<String>,
+    @JsonProperty("class")
     val clazz: List<String>? = null,
     val properties: T? =null,
     val entities: List<SubEntity>? = null,
@@ -95,7 +101,7 @@ data class EmbeddedEntity<T>(
     val title: String? = null
 ) : SubEntity() {
     companion object {
-        inline fun <reified T> getType(): TypeFactory<EmbeddedEntity<T>> =
-            object : TypeFactory<EmbeddedEntity<T>>() { }
+        inline fun <reified T> getType(): TypeReference<EmbeddedEntity<T>> =
+            object : TypeReference<EmbeddedEntity<T>>() { }
     }
 }
