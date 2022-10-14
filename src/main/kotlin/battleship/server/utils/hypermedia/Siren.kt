@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.core.type.TypeReference
 import java.net.URI
 import org.springframework.http.*
-import com.fasterxml.jackson.databind.type.TypeFactory
 
 /**
  * For details regarding the Siren media type, see <a href="https://github.com/kevinswiber/siren">Siren</a>
