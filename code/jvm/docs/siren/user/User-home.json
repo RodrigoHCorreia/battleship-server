@@ -1,0 +1,10 @@
+{
+  "class": "user-home",
+  "description": "The authenticated user's home",
+  "properties": {
+    "userToken": {
+      "type": "text",
+      "description": "The user's Beaker token"
+    }
+  }
+}

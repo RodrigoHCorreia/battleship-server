@@ -1,7 +1,0 @@
-
-interface Storage {
-
-    fun registerNewUser();
-
-}
-

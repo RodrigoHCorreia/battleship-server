@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  //replace with real URI
+  "$id": "http://api.localhost:8080/token",
+  "title": "token",
+  "description": "Response for the request of a Bearer Token",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "description": "The token entity identifier key, used in accessing protected endpoints",
+      "type": "string",
+      "maxLength": 50
+    },
+    //Should we store username or user id?
+    "username": {
+      "description": "The login name of the user who's the owner of the token.",
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 45
+    },
+    "expirationinterval": {
+      "description": "The lifetime in seconds of the token",
+      "type": "number",
+      "maximum": 86400,
+      "minimum": 86400,
+      "default": 86400
+    }
+  },
+  "required": [
+    "identifier",
+    "username"
+  ]
+}

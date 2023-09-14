@@ -1,0 +1,76 @@
+{
+  "class": [
+    "home"
+  ],
+  "description": "Home page where unauthenticated users set their intention to authenticate and will be forwarded to the authenticated user home page.",
+  "actions": [
+    {
+      "name": "register",
+      "title": "Create User",
+      "method": "POST",
+      "href": "http://localhost:8080/register",
+      "type": "application/json",
+      "fields": [
+        {
+          "name": "userId",
+          "type": "number"
+        },
+        {
+          "name": "nickname",
+          "type": "text"
+        },
+        {
+          "name": "email",
+          "type": "email"
+        },
+        {
+          "name": "password",
+          "type": "password"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "title": "Login User",
+      "method": "POST",
+      "href": "http://localhost:8080/login",
+      "type": "application/json",
+      "fields": [
+        {
+          "name": "nickname",
+          "type": "text"
+        },
+        {
+          "name": "password",
+          "type": "password"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": [
+        "self"
+      ],
+      "href": "http://localhost:8080"
+    },
+    {
+      "rel": [
+        "get-user-home"
+      ],
+      "href": "http://localhost:8080/user/${userId}"
+    },
+    {
+      "rel": [
+        "get-games-hub"
+      ],
+      "href": "http://localhost:8080/games"
+    },
+    {
+      "rel": [
+        "ranking"
+      ],
+        "href": "http://localhost:8080/ranking"
+    }
+  ]
+}

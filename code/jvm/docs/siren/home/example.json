@@ -1,0 +1,29 @@
+{
+  "class": [
+    "example"
+  ],
+  "description": "Example class for presentation purposes",
+  "actions": [
+    {
+      "name": "action1",
+      "title": "Action 1",
+      "method": "POST",
+      "href": "http://localhost:8080/action1",
+      "type": "application/json",
+      "fields": [
+        {
+          "name": "field1",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": [
+        "self"
+      ],
+      "href": "http://localhost:8080"
+    }
+  ]
+}

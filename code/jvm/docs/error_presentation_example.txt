@@ -1,0 +1,9 @@
+HTTP/1.1 404 Not Found
+Content-Type: application/problem+json
+
+{
+    "type": "https://example.com/problems/not-found",
+    "title": "UriNotFound.",
+    "detail": "URI "/invalid" not found.",
+    "instance": "/invalid",
+}

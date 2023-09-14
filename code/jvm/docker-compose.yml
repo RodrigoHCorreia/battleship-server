@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  postgredb:
+    container_name: postgredb
+    hostname: postgredb
+    restart : always
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  battleship-service:
+    container_name: battleship-service
+    hostname: battleship-service
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      JDBI_URL: jdbc:postgresql://postgredb:5432/postgres
+      JDBI_USERNAME: postgres
+      JDBI_PASSWORD: postgres
+      PORT: 8081
+    depends_on:
+      - postgredb
+    ports:
+      - 8081:8081
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/etc/nginx
+    depends_on:
+      - battleship-service
+volumes:
+  db:
+    driver: local
